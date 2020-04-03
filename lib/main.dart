@@ -46,8 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
           future: fetchPrefectures(),
           builder: (BuildContext context, AsyncSnapshot <List<Prefecture>> snapshot){
             if(snapshot.hasData){
-              return Container(
-                child: Text('Successed!!'),
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index){
+                  return ListTile(
+                    title: Text(snapshot.data[index].prefecture_name),
+                  );
+                },
               );
             }else if(snapshot.hasError){
               return Text('Failed Get JSON Data!!!');
