@@ -49,10 +49,19 @@ class _MyHomePageState extends State<MyHomePage> {
               return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index){
-                  return ListTile(
-                    title: Text(snapshot.data[index].prefecture_name),
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(width: 0.5, color: Colors.grey))
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data[index].prefecture_name),
+                      onTap:(){
+                        print ("${snapshot.data[index].prefecture_name} is Tapped!!");
+                      },
+                    ),
                   );
                 },
+
               );
             }else if(snapshot.hasError){
               return Text('Failed Get JSON Data!!!');
