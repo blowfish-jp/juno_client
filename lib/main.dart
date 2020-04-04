@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:juno_client/SecondPage.dart';
 import 'package:juno_client/models/Prefecture.dart';
 
 void main() {
@@ -57,6 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       title: Text(snapshot.data[index].prefecture_name),
                       onTap:(){
                         print ("${snapshot.data[index].prefecture_name} is Tapped!!");
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) =>
+                              SecondPage(prefectureId: snapshot.data[index].id,
+                                         prefectureName: snapshot.data[index].prefecture_name,)));
                       },
                     ),
                   );
